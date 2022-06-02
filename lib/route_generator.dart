@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:second_capstone/screens/messages/call_screen.dart';
+import 'package:second_capstone/screens/messages/chat_screen.dart';
 import 'package:second_capstone/screens/home/home.dart';
 import 'package:second_capstone/main.dart';
 import 'package:second_capstone/screens/applications/application_details_screen.dart';
@@ -10,6 +12,7 @@ import 'package:second_capstone/screens/login_register/register_account_screen.d
 import 'package:second_capstone/screens/search/search_screen.dart';
 import 'package:second_capstone/screens/applications/your_applications_screen.dart';
 import 'package:second_capstone/models/models.dart';
+import 'models/chat.dart';
 import 'screens/home/home.dart';
 
 class RouteGenerator {
@@ -42,7 +45,8 @@ class RouteGenerator {
           },
         );
       case '/jobApplyScreen':
-        final jobApplyScreenArgs = settings.arguments as JobApplyScreenArguments;
+        final jobApplyScreenArgs =
+            settings.arguments as JobApplyScreenArguments;
         return CupertinoPageRoute(
           builder: (_) {
             return JobApplyScreen(
@@ -67,6 +71,22 @@ class RouteGenerator {
         if (args is JobApplications) {
           return CupertinoPageRoute(
               builder: (_) => ApplicationDetailsScreen(jobApp: args));
+        }
+        return _errorRoute();
+      case '/chatScreen':
+        final chatScreenArgs = settings.arguments as ChatScreenArguments;
+        return CupertinoPageRoute(
+          builder: (_) {
+            return ChatScreen(
+              chatLogs: chatScreenArgs.chatLogs,
+              friend: chatScreenArgs.friend,
+            );
+          },
+        );
+      case '/callScreen':
+        if (args is Users) {
+          return CupertinoPageRoute(
+              builder: (_) => CallScreen(friend: args));
         }
         return _errorRoute();
       default:
@@ -107,5 +127,15 @@ class JobApplyScreenArguments {
   JobApplyScreenArguments(
     this.job,
     this.user,
+  );
+}
+
+class ChatScreenArguments {
+  final List<Chat> chatLogs;
+  final Users friend;
+
+  ChatScreenArguments(
+    this.chatLogs,
+    this.friend,
   );
 }

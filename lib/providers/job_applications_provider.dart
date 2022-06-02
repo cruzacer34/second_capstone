@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:second_capstone/models/models.dart';
 import 'dart:io';
-import '../models/job_applications.dart';
 
 class JobApplicationsProvider extends ChangeNotifier {
   final List<JobApplications> _jobApps = [];
@@ -31,6 +30,7 @@ class JobApplicationsProvider extends ChangeNotifier {
         job: job,
       ),
     );
+    notifyListeners();
   }
 
   void deleteJob(int id) {

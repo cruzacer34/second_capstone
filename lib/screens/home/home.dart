@@ -6,7 +6,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:second_capstone/screens/drawer_screen.dart';
 import 'package:second_capstone/screens/edit_profile_screen.dart';
 import 'package:second_capstone/screens/home/home_screen.dart';
-import 'package:second_capstone/screens/messages_screen.dart';
+import 'package:second_capstone/screens/messages/messages_screen.dart';
 import 'package:second_capstone/screens/notification_screen.dart';
 import '../../models/users.dart';
 

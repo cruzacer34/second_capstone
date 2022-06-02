@@ -4,6 +4,7 @@ class Users {
   String userName;
   String password;
   String profilePicUrl;
+  String portraitPicUrl;
   String fullName;
   List<bool> notifications;
 
@@ -13,6 +14,7 @@ class Users {
     required this.userName,
     required this.password,
     this.profilePicUrl = 'assets/profile_pics/empty.png',
+    this.portraitPicUrl = 'assets/profile_pics/empty.png',
     this.fullName = 'No Name',
-  }) : notifications = List.generate(6, (index) => false);
+  })  : notifications = List.generate(6, (index) => false);
 }

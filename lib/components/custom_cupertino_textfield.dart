@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:second_capstone/components/components.dart';
+import 'package:second_capstone/components/custom_icon_button.dart';
 
 class CustomCupertinoTextField extends StatelessWidget {
   final String? hint;
   final IconData? prefixIcon;
+  final Widget? suffixIcon;
   final bool? isShown;
   final Function()? onSuffixPressed;
   final TextEditingController controller;
@@ -15,6 +17,7 @@ class CustomCupertinoTextField extends StatelessWidget {
     Key? key,
     this.hint,
     this.prefixIcon,
+    this.suffixIcon,
     this.isShown,
     this.onSuffixPressed,
     required this.controller,
@@ -54,22 +57,13 @@ class CustomCupertinoTextField extends StatelessWidget {
       maxLines: multiLine ?? 1,
       obscureText: (isShown == false) ? true : false,
       suffix: (hint == 'Password')
-          ? Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Material(
-                color: Colors.transparent,
-                child: IconButton(
-                  onPressed: onSuffixPressed,
-                  icon: Icon(
-                    (isShown == true)
-                        ? CupertinoIcons.eye
-                        : CupertinoIcons.eye_slash,
-                    color: CustomColor.grey,
-                  ),
-                ),
-              ),
+          ? CustomIconButton(
+              right: 20,
+              icon: isShown == true ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
+              onPressed: onSuffixPressed,
+              color: CustomColor.grey,
             )
-          : null,
+          : suffixIcon,
       placeholderStyle: const TextStyle(
         color: CustomColor.grey,
         fontFamily: 'Poppins',

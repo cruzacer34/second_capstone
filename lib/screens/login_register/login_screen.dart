@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:second_capstone/components/components.dart';
 import 'package:second_capstone/components/custom_cupertino_buttons.dart';
+import 'package:second_capstone/models/freeze.dart';
 import 'package:second_capstone/providers/users_provider.dart';
 import 'package:second_capstone/screens/login_register/widgets/login_register_title.dart';
 import 'package:second_capstone/screens/login_register/widgets/or_continue_with.dart';
@@ -20,6 +23,8 @@ class _LoginScreenState extends State<LoginScreen> {
   String _email = '';
   String _pass = '';
   bool _isShown = false;
+
+  var loginResult = const LoginResult.loading();
 
   @override
   void initState() {
@@ -47,13 +52,48 @@ class _LoginScreenState extends State<LoginScreen> {
     if (isEmailValid) {
       bool isUsersFound = usersProv.findUser(context, _email, _pass);
       if (isUsersFound) {
+        loginResult = LoginResult.success(_email);
+      } else {
+        loginResult = const LoginResult.failure('Either user not found or wrong pass');
+      }
+    } else {
+      loginResult = const LoginResult.failure('Email is not valid');
+    }
+
+    loginResult.when(
+      loading: () {
+        showCupertinoDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (context) => const CupertinoAlertDialog(
+            title: Text('Wait we are loading the data'),
+          ),
+        );
+      },
+      success: (value) {
         Navigator.of(context).pushNamedAndRemoveUntil(
           '/home',
           arguments: usersProv.selectedUser(),
-          (route) => false,
+              (route) => false,
         );
-      }
-    }
+        showCupertinoDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (context) => CupertinoAlertDialog(
+            title: Text('Welcome ${usersProv.selectedUser().fullName}'),
+          ),
+        );
+      },
+      failure: (value) {
+        return showCupertinoDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (context) => CupertinoAlertDialog(
+            title: Text(value),
+          ),
+        );
+      },
+    );
   }
 
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:second_capstone/components/black_icon_button.dart';
+import 'package:second_capstone/components/custom_icon_button.dart';
 import 'package:second_capstone/components/utils.dart';
 
 class CustomCupertinoNavBar extends StatelessWidget
@@ -29,7 +29,7 @@ class CustomCupertinoNavBar extends StatelessWidget
       backgroundColor: CupertinoTheme.of(context).scaffoldBackgroundColor,
       border: CustomBorder.noElevation,
       leading: (leading == null)
-          ? BlackIconButton(
+          ? CustomIconButton(
               icon: CupertinoIcons.back,
               onPressed: () => Navigator.of(context).pop(),
             )

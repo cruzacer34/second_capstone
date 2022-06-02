@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:second_capstone/providers/chat_provider.dart';
 import 'package:second_capstone/providers/filter_provider.dart';
 import 'package:second_capstone/providers/providers.dart';
 import 'package:second_capstone/route_generator.dart';
@@ -28,6 +29,7 @@ class SecondCapstone extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => JobApplicationsProvider()),
         ChangeNotifierProvider(create: (context) => JobPostingProvider()),
         ChangeNotifierProvider(create: (context) => FilterProvider()),
+        ChangeNotifierProvider(create: (context) => ChatProvider()),
       ],
       child: const CupertinoApp(
         theme: CupertinoThemeData(

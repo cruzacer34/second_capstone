@@ -61,9 +61,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 scale: 0.8,
                 child: CupertinoSwitch(
                   activeColor: CupertinoTheme.of(context).primaryColor,
-                  value: usersProv.selectedUser()!.notifications[index],
+                  value: usersProv.selectedUser().notifications[index],
                   onChanged: (value) => setState(() {
-                    usersProv.selectedUser()!.notifications[index] = value;
+                    usersProv.selectedUser().notifications[index] = value;
                   }),
                 ),
               ),

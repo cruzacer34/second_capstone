@@ -15,7 +15,7 @@ class ProfilePic extends StatelessWidget {
     final user = Provider.of<UsersProvider>(context).selectedUser();
     return ClipOval(
       child: Image.asset(
-        user?.profilePicUrl,
+        user.profilePicUrl,
         width: width,
       ),
     );

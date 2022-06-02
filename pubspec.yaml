@@ -33,6 +33,9 @@ dependencies:
   flutter_zoom_drawer: ^3.0.2
   file_picker: ^4.6.0
   persistent_bottom_nav_bar: ^4.0.2
+  intl: ^0.17.0
+  flutter_slidable: ^1.3.0
+  freezed_annotation: any
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -48,6 +51,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: any
+  json_serializable: any
+  freezed: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -66,6 +72,7 @@ flutter:
     - assets/logos/
     - assets/profile_pics/
     - assets/icons/
+    - assets/portrait_pics/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

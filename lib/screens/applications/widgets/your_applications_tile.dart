@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:second_capstone/components/black_icon_button.dart';
 import 'package:second_capstone/components/components.dart';
+import 'package:second_capstone/components/custom_icon_button.dart';
 import 'package:second_capstone/models/models.dart';
 import 'package:second_capstone/providers/providers.dart';
 
@@ -57,7 +57,7 @@ class ApplicationsTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  BlackIconButton(
+                  CustomIconButton(
                     icon: CupertinoIcons.ellipsis_vertical,
                     onPressed: () => options(context, jobAppProv, jobPostProv),
                   ),

@@ -86,7 +86,7 @@ class _JobDescriptionModalState extends State<JobDescriptionModal> {
                               '/jobApplyScreen',
                               arguments: JobApplyScreenArguments(
                                 widget.job,
-                                usersProv.selectedUser()!,
+                                usersProv.selectedUser(),
                               ),
                             ),
                     child: PoppinsText(

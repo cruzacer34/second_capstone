@@ -43,6 +43,10 @@ class CustomBorder {
     borderRadius: radius12,
     color: const Color(0xFFFAFAFA),
   );
+  static BoxDecoration senderChatBox = BoxDecoration(
+    borderRadius: radius12,
+    color: const Color(0xFF4CA6A8).withOpacity(0.1),
+  );
   static BoxDecoration transparentBoxRadius12 = BoxDecoration(
     borderRadius: radius12,
   );

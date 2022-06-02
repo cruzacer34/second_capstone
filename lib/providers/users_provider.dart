@@ -9,6 +9,7 @@ class UsersProvider extends ChangeNotifier {
       userName: 'price141',
       password: 'asd',
       profilePicUrl: 'assets/profile_pics/price.jpg',
+      portraitPicUrl: 'assets/portrait_pics/price.jpg',
       fullName: 'John Price',
     ),
     Users(
@@ -17,7 +18,35 @@ class UsersProvider extends ChangeNotifier {
       userName: 'soap141',
       password: 'asd',
       profilePicUrl: 'assets/profile_pics/soap.jpg',
+      portraitPicUrl: 'assets/portrait_pics/soap.png',
       fullName: 'John Soap MacTavish',
+    ),
+    Users(
+      id: 3,
+      emailAddress: 'alejandro@yahoo.com',
+      userName: 'alej141',
+      password: 'asd',
+      profilePicUrl: 'assets/profile_pics/alejandro.jpg',
+      portraitPicUrl: 'assets/portrait_pics/alejandro.jpg',
+      fullName: 'Alejandro Rojas',
+    ),
+    Users(
+      id: 4,
+      emailAddress: 'sgriley@gmail.com',
+      userName: 'ghost141',
+      password: 'asd',
+      profilePicUrl: 'assets/profile_pics/ghost.jpg',
+      portraitPicUrl: 'assets/portrait_pics/ghost.jpg',
+      fullName: 'Simon Riley',
+    ),
+    Users(
+      id: 5,
+      emailAddress: 'gaz@gmail.com',
+      userName: 'gaz141',
+      password: 'asd',
+      profilePicUrl: 'assets/profile_pics/gaz.jpg',
+      portraitPicUrl: 'assets/portrait_pics/gaz.jpg',
+      fullName: 'Kyle Garrick',
     ),
   ];
   final List<String> _selectedUserCredential = [];
@@ -43,8 +72,10 @@ class UsersProvider extends ChangeNotifier {
     return isUserFound;
   }
 
-  dynamic selectedUser() {
-    Users foundUser;
+
+
+  Users selectedUser() {
+    var foundUser;
     var user =
         _users.where((user) => user.emailAddress == _selectedUserCredential[0]);
     if (user.isNotEmpty) {
@@ -54,7 +85,7 @@ class UsersProvider extends ChangeNotifier {
         }
       }
     }
-    return null;
+    return foundUser;
   }
 
   void addUser(String userName, String emailAddress, String password) {
@@ -110,11 +141,13 @@ class UsersProvider extends ChangeNotifier {
     List<String> split = email.split('');
     if (split.contains('@') &&
         email.substring(email.length - 4) == '.com' &&
-        email.substring(email.length - 5) != '@' && split.first != '@') {
+        email.substring(email.length - 5) != '@' &&
+        split.first != '@') {
       isEmailValid = true;
     } else {
       alertDialog(context, 'Please input a valid email');
     }
+
     return isEmailValid;
   }
 
